@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   booking_module:
-    image: booking_module
+    image: ramkhalsa/bookingmodule
     environment:
       MYSQL_USER: root
       MYSQL_HOST: database
@@ -17,7 +17,7 @@ services:
       - 3003:3003
 
   database_seed:
-    image: db-seed
+    image: ramkhalsa/db-seed
     environment:
       MYSQL_HOST: database
       MYSQL_USER: root
