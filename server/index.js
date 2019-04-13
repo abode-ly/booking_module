@@ -14,7 +14,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/bookings', express.static(path.join(__dirname, '../client/dist')));
+app.use('/bookings/:roomid', express.static(path.join(__dirname, '../client/dist')));
 app.use(morgan('dev'));
 
 app.get('/bookings/:accommodationid/reserve', async (req, res) => {

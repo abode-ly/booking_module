@@ -1,28 +1,27 @@
 const Sequelize = require('sequelize');
 const mysql = require('mysql2/promise');
-const pw = process.env.MYSQL_ROOT_PASSWORD || require('./config/sequelize.config').rootPW;
+const localPassword = require('./config/example.config');
 
-const databaseName = process.env.MYSQL_DATABASE || 'bookings';
+const {
+  MYSQL_HOST,
+  MYSQL_USER,
+  MYSQL_PORT,
+  MYSQL_DATABASE,
+  MYSQL_ROOT_PASSWORD,
+} = process.env;
 
-mysql.createConnection({
-  host: process.env.MYSQL_HOST || '172.17.0.2',
-  port: process.env.MYSQL_PORT || '3306',
-  user: process.env.MYSQL_USER || 'root',
-  password: pw || 'root',
-})
-  .then((connection) => {
-    connection.query(`CREATE DATABASE IF NOT EXISTS ${databaseName};`).then(() => {
-      console.info('Database create or successfully checked');
-      connection.end();
-    });
-});
+const host = MYSQL_HOST || '172.17.0.2';
+const port = MYSQL_PORT || '3306';
+const user = MYSQL_USER || 'root';
+const databaseName = MYSQL_DATABASE || 'bookings';
 
-const db = new Sequelize(databaseName, 'root', pw, {
-  host: process.env.MYSQL_URL || '172.17.0.2',
+// });
+console.log(host, databaseName, user, MYSQL_ROOT_PASSWORD, localPassword);
+const db = new Sequelize(databaseName, user, MYSQL_ROOT_PASSWORD || localPassword, {
+  host,
   dialect: 'mysql',
   logging: false,
 });
 
-// db.query(`CREATE DATABASE IF NOT EXISTS ${databaseName};`).then(() => console.info('Database created'));
 
 module.exports = db;
