@@ -7,3 +7,4 @@ tests/coverage
 .eslintignore
 Dockerfile
 .dockerignore
+client/dist/BookingModule.bundle.js.br

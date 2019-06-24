@@ -15,8 +15,6 @@ const port = MYSQL_PORT || '3306';
 const user = MYSQL_USER || 'root';
 const databaseName = MYSQL_DATABASE || 'bookings';
 
-// });
-console.log(host, databaseName, user, MYSQL_ROOT_PASSWORD, localPassword);
 const db = new Sequelize(databaseName, user, MYSQL_ROOT_PASSWORD || localPassword, {
   host,
   dialect: 'mysql',

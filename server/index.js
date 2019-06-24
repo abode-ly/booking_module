@@ -1,8 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const expressStaticGzip = require('express-static-gzip');
 const dateFormatter = require('./helpers');
 const port = require('./.env.js');
+
 
 const app = express();
 const sequelize = require('../database/index');
@@ -14,7 +16,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/bookings/:roomid', express.static(path.join(__dirname, '../client/dist')));
+app.use('/bookings/:roomid', expressStaticGzip(path.join(__dirname, '../client/dist'), {
+  enableBrotli: true,
+}));
+
 app.use(morgan('dev'));
 
 app.get('/bookings/:accommodationid/reserve', async (req, res) => {
@@ -34,7 +39,6 @@ app.get('/bookings/:accommodationid/reserve', async (req, res) => {
   WHERE reservations.accommodation_id = accommodation.id AND guests.id = reservations.guest_id AND accommodation.id = ${req.params.accommodationid}
   AND reservations.date BETWEEN CAST('${dateFormatter(now)}' AS DATE) AND CAST('${dateFormatter(current)}' AS DATE);`,
   { type: sequelize.QueryTypes.SELECT });
-
   res.send(JSON.stringify({ accommodation, availability }));
 });
 

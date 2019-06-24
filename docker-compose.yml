@@ -16,6 +16,7 @@ services:
     ports:
       - 3003:3003
 
+
   database_seed:
     image: ramkhalsa/db-seed
     environment:
@@ -35,7 +36,7 @@ services:
       - MYSQL_ROOT_PASSWORD=YOUR_PASSWORD_HERE!
       - MYSQL_DATABASE=bookings
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-pYOUR_PASSWORD_HERE!"]
       timeout: 20s
       retries: 3
     ports:
