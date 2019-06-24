@@ -57,7 +57,6 @@ export const fetchAvailability = (
     .then(handleErrors)
     .then(res => res.json())
     .then((json) => {
-      console.log(json);
       const availability = json.availability.reduce((acc, cv) => {
         acc[formatDate(new Date(`${cv.date} Z`))] = true;
         return acc;

@@ -4,7 +4,12 @@ import styled from 'styled-components';
 import theme from './themes/default';
 import CalendarDOTW from './CalendarDOTW';
 import CalendarTable from './CalendarTable';
-import { DateData, formatDate, nextMonth, prevMonth } from '../helpers/Dates';
+import {
+  DateData,
+  formatDate,
+  nextMonth,
+  prevMonth,
+} from '../helpers/Dates';
 
 const CalendarContainer = styled.div`
   border-width: ${theme.borders.width};
@@ -33,7 +38,6 @@ const ButtonContainer = styled.div`
   font-size: ${theme.fonts.size[2]};
   line-height: 10.92px;
   color: ${theme.palette[2]};
-  // Todo: determine if right color, revise color names to describe how they're used
 `;
 
 const CalendarArrow = styled.svg`

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import theme from './themes/default';
@@ -6,7 +5,6 @@ import GuestDropdown from './GuestDropdown';
 
 const GuestContainer = styled.div`
   width: 100%;
-  // Tech debt: may need margin when dropdown not rendered;
 `;
 
 const GuestLabel = styled.label`
@@ -30,7 +28,6 @@ const GuestButton = styled.button`
   justify-content: space-around;
   width: 100%;
   height: 40px;
-  // Tech debt: update border to 2 px on bottom when clicked (and remove when collapsed)
 `;
 
 const GuestArrow = styled.svg`
@@ -48,7 +45,6 @@ const GuestTextContainer = styled.div`
 const GuestHighlighter = styled.span`
   height: 22px;
 
-  // Tech debt: update on state implementation to add on-click effect;
   &:focus {
     padding: 4.25px 8.5px;
     border-radius: 3px;

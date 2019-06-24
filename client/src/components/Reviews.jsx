@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import { Stars } from './Stars';
 import theme from './themes/default';
 
-const ReviewContainer = styled.div`
-// ToDO: Complete CSS here or repurpose to normal div
-`;
-
 const ReviewLabel = styled.span`
   font-family: ${theme.fonts.primary};
   font-weight: 600;
@@ -15,15 +11,13 @@ const ReviewLabel = styled.span`
   color: ${theme.fonts.color[0]};
 `;
 
-
 const Reviews = ({ numReviews, rating }) => (
-  // to-do: wrap stars and review label in button to allow navigation on-screen
-  <ReviewContainer>
+  <div>
     <Stars rating={rating} />
     <ReviewLabel>
       { ` ${numReviews || 'No Reviews Yet'}` }
     </ReviewLabel>
-  </ReviewContainer>
+  </div>
 );
 
 export {
