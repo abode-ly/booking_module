@@ -22,12 +22,9 @@ const PriceLabel = ({ price, additionalGuestFee, overGuestThreshold }) => (
   <div id="bm-price-label-container">
     <Price>
       {price
-        ? `$
-      ${overGuestThreshold
+        ? `$${overGuestThreshold
           ? Math.ceil(Number(price) + Number(additionalGuestFee))
-          : Math.ceil(price)
-      }
-      `
+          : Math.ceil(price)}`
         : 'Loading'
     }
     </Price>
