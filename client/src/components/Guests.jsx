@@ -80,6 +80,7 @@ const Guests = ({
   selectGuests,
   selectInfants,
   maxGuests,
+  guestThreshold,
 }) => (
   <GuestContainer>
     <GuestLabel>Guests</GuestLabel>
@@ -111,6 +112,7 @@ const Guests = ({
             numInfants={numInfants}
             changeGuests={changeGuests}
             maxGuests={maxGuests}
+            guestThreshold={guestThreshold}
           />
         )
         : null}

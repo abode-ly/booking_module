@@ -82,7 +82,7 @@ const Calendar = ({
         const lMo = prevMonth(currentMonth, currentYear);
         const accommodationID = window.location.pathname.split('/')[2] || Math.floor(Math.random() * 100);
         fetchAvailability(formatDate(new Date(lMo[1] + 1900, lMo[0], 1)), formatDate(new Date(currentYear + 1900, currentMonth, 1)), accommodationID);
-        changeMonth('decrease'); 
+        changeMonth('decrease');
       }}
       >
         <CalendarArrow viewBox="0 0 1000 1000">
@@ -97,7 +97,7 @@ const Calendar = ({
         const nxtMoEnd = nextMonth(nxtMoStart[0], nxtMoStart[1]);
         const accommodationID = window.location.pathname.split('/')[2] || Math.floor(Math.random() * 100);
         fetchAvailability(formatDate(new Date(nxtMoStart[1] + 1900, nxtMoStart[0], 1)), formatDate(new Date(nxtMoEnd[1] + 1900, nxtMoEnd[0], 1)), accommodationID);
-        changeMonth('increase'); 
+        changeMonth('increase');
       }}
       >
         <CalendarArrow viewBox="0 0 1000 1000">

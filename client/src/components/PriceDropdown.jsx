@@ -18,14 +18,17 @@ const PriceDropdown = ({
   cleaningFee,
   accommodationTax,
   generalTax,
+  overGuestThreshold,
+  additionalGuestFee,
 }) => {
   const numDays = daysBetween(checkInDate, checkOutDate);
-  const subTotal = Math.ceil(price) * numDays;
+  const finalPrice = overGuestThreshold ? (Number(additionalGuestFee) + Number(price)) : price;
+  const subTotal = Math.ceil(finalPrice) * numDays;
   const tax = Number(accommodationTax) + Number(generalTax);
   const serviceFee = Math.ceil(subTotal * 0.08);
 
   let PriceRows = [];
-  PriceRows.push([`$${Math.ceil(price)} x ${numDays} night${numDays > 1 ? 's' : ''}`, `$${formatPrice(subTotal)}`]);
+  PriceRows.push([`$${Math.ceil(finalPrice)} x ${numDays} night${numDays > 1 ? 's' : ''}`, `$${formatPrice(subTotal)}`]);
   if (cleaningFee) PriceRows.push(['Cleaning fee', `$${Math.ceil(cleaningFee)}`]);
   if (tax > 0.01) PriceRows.push(['Occupancy taxes and fees', `$${Math.ceil(subTotal * (tax))}`]);
   PriceRows.push(['Service fee', `$${serviceFee}`]);

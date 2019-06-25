@@ -21,6 +21,7 @@ export default function guestReducer(state = initialState, action) {
       return {
         ...state,
         [action.guestType]: action.num,
+        overGuestThreshold: action.overGuestThreshold,
       };
 
     case TOGGLE_GUEST_SELECTION:

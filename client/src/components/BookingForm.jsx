@@ -55,6 +55,7 @@ class BookingForm extends Component {
       checkInDate,
       checkOutDate,
       checkInSelected,
+      toggleCalendar,
       checkOutSelected,
     } = this.props;
     return (

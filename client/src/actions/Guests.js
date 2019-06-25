@@ -3,10 +3,11 @@ export const TOGGLE_GUEST_SELECTION = 'TOGGLE_GUEST_SELECTION';
 export const TOGGLE_INFANT_SELECTION = 'TOGGLE_INFANT_SELECTION';
 export const TOGGLE_GUEST_DROPDOWN = 'TOGGLE_GUEST_DROPDOWN';
 
-export const changeGuests = (guestType, num) => ({
+export const changeGuests = (guestType, num, overGuestThreshold) => ({
   type: CHANGE_GUESTS,
   guestType,
   num,
+  overGuestThreshold,
 });
 
 export const guestSelected = () => ({
