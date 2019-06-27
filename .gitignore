@@ -2,9 +2,9 @@ node_modules
 .eslintrc.js
 database/config/sequelize.config.js
 webpack.config.js
-client/dist/BookingModule.bundle.js
 tests/coverage
 .eslintignore
 Dockerfile
 .dockerignore
 client/dist/BookingModule.bundle.js.br
+client/dist/BookingModule.bundle.js

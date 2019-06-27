@@ -1,5 +1,5 @@
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import ReportListing from './ReportListing';
 import BookingContainer from './BookingContainer';
 
@@ -10,14 +10,18 @@ const GlobalStyles = createGlobalStyle`
   }
   `;
 
+const BookingParentContainer = styled.div`
+  max-width: 430px;
+  `;
+
 const BookingModule = () => (
-  <div id="bm-top-margin">
+  <BookingParentContainer>
     <div id="bm-parent-container">
       <GlobalStyles />
       <BookingContainer />
       <ReportListing />
     </div>
-  </div>
+  </BookingParentContainer>
 );
 
 export default BookingModule;

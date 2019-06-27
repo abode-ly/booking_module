@@ -16,6 +16,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.static(path.join(__dirname, 'dist')));
+
 app.use('/bookings/:roomid', expressStaticGzip(path.join(__dirname, '../client/dist'), {
   enableBrotli: true,
 }));
