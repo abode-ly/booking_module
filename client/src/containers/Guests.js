@@ -24,8 +24,8 @@ const mapDispatchToProps = dispatch => ({
     e.preventDefault();
     dispatch(toggleGuestDropdown());
   },
-  changeGuests: (guestType, num) => {
-    dispatch(changeGuests(guestType, num));
+  changeGuests: (guestType, num, guestThreshold) => {
+    dispatch(changeGuests(guestType, num, guestThreshold));
   },
   selectGuests: () => {
     dispatch(guestSelected());

@@ -21,11 +21,12 @@ const PerNight = styled.span`
 const PriceLabel = ({ price, additionalGuestFee, overGuestThreshold }) => (
   <div id="bm-price-label-container">
     <Price>
-      $
-      { overGuestThreshold
-        ? Math.ceil(price + additionalGuestFee)
-        : Math.ceil(price)
-      }
+      {price
+        ? `$${overGuestThreshold
+          ? Math.ceil(Number(price) + Number(additionalGuestFee))
+          : Math.ceil(price)}`
+        : 'Loading'
+    }
     </Price>
     <PerNight> per night</PerNight>
   </div>

@@ -215,5 +215,3 @@ describe('Adults Incrementer', () => {
     expect(wrapper.find('span').find('#bm-children-count-label').text()).toEqual('2');
   });
 });
-
-// TODO: Close button Test

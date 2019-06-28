@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import theme from './themes/default';
 import { DateData, formatDate, getCheckInDay } from '../helpers/Dates';
 
-// Todo: fix spacing/margins
-
 const StyledCalendarTable = styled.table`
   border-collapse: collapse;
   border-spacing: 0px;
@@ -44,8 +42,6 @@ const CalendarTable = ({
   currentYear = 119,
   availability = {},
   checkInDate,
-  lastAvailable,
-  minStay,
   checkInSelected,
   checkOutSelected,
   changeCheckIn,
@@ -70,11 +66,14 @@ const CalendarTable = ({
     }
   } else if (checkOutSelected) {
     let firstUnavail = false;
-    const checkInDay = getCheckInDay(checkInDate);
+    let { checkInDay, checkInMonth } = getCheckInDay(checkInDate);
+    const monthDiff = currentMonth - checkInMonth;
+    if (monthDiff < -1 || monthDiff > 0 || monthDiff === 0 && checkInDay < 30) { firstUnavail = true; }
+    if (currentMonth - checkInMonth === 0) { checkInDay = 0; }
     for (let j = 1; j <= DateData[currentMonth].numDays; j += 1) {
-      const date = formatDate(new Date(currentYear + 1900, currentMonth, j));
-      if (j > checkInDay && availability[date]) {firstUnavail = true;}
-      if (j < checkInDay || availability[date] || date < today || firstUnavail) {
+      const date = formatDate(new Date(currentYear + 1900, currentMonth, j - 1));
+      if (j > checkInDay && availability[date]) { firstUnavail = true; }
+      if (j <= checkInDay - 1 || availability[date] || date < today || firstUnavail) {
         days.push(<UnavailableDay id={date}>{j}</UnavailableDay>);
       } else {
         (days.push(<AvailableDay id={date} onClick={e => changeCheckOut(e.target.id)}>{j}</AvailableDay>));

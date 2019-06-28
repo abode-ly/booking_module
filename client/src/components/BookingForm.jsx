@@ -9,8 +9,6 @@ import { fetchAccommodation } from '../actions/AccommodationAvailabilityActions'
 import { toggleCalendar } from '../actions/Calendar';
 import PriceBreakout from '../containers/PriceBreakout';
 
-const BookingModPort = require('../../../server/.env.js');
-
 const CheckOutContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -49,8 +47,6 @@ class BookingForm extends Component {
     const { dispatch } = this.props;
     const accommodationID = window.location.pathname.split('/')[2] || Math.floor(Math.random() * 100);
 
-    // const { protocol, hostname, pathname } = window.location;
-    // const path = `${protocol}//${hostname}:${BookingModPort}/bookings/${pathname.split('/')[2] || accommodationID}/reserve`;
     dispatch(fetchAccommodation(accommodationID));
   }
 
@@ -58,8 +54,8 @@ class BookingForm extends Component {
     const {
       checkInDate,
       checkOutDate,
-      toggleCalendar,
       checkInSelected,
+      toggleCalendar,
       checkOutSelected,
     } = this.props;
     return (

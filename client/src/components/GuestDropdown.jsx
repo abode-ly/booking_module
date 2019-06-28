@@ -107,6 +107,7 @@ const GuestDropdown = ({
   numInfants = 0,
   handleDropdownClick,
   changeGuests,
+  guestThreshold,
 }) => (
   <DropdownContainer>
     <AdultsContainer>
@@ -117,7 +118,9 @@ const GuestDropdown = ({
         <GuestCountButton
           onClick={(e) => {
             e.preventDefault();
-            if (numAdults > 1) changeGuests('numAdults', numAdults - 1);
+            const newAdults = numAdults - 1;
+            const overThreshold = (newAdults + numChildren + numInfants) > guestThreshold;
+            if (numAdults > 1) changeGuests('numAdults', newAdults, overThreshold);
           }}
         >
           <GuestCountSVG viewBox="0 0 24 24">
@@ -130,7 +133,9 @@ const GuestDropdown = ({
         <GuestCountButton
           onClick={(e) => {
             e.preventDefault();
-            if (numAdults + numChildren < maxGuests) changeGuests('numAdults', numAdults + 1);
+            const newAdults = numAdults + 1;
+            const overThreshold = (newAdults + numChildren + numInfants) > guestThreshold;
+            if (numAdults + numChildren < maxGuests) changeGuests('numAdults', newAdults, overThreshold);
           }}
         >
           <GuestCountSVG viewBox="0 0 24 24">
@@ -149,7 +154,9 @@ const GuestDropdown = ({
         <GuestCountButton
           onClick={(e) => {
             e.preventDefault();
-            if (numChildren > 0) changeGuests('numChildren', numChildren - 1);
+            const newChildren = numChildren - 1;
+            const overThreshold = (numAdults + newChildren + numInfants) > guestThreshold;
+            if (numChildren > 0) changeGuests('numChildren', newChildren, overThreshold);
           }}
         >
           <GuestCountSVG viewBox="0 0 24 24">
@@ -162,7 +169,9 @@ const GuestDropdown = ({
         <GuestCountButton
           onClick={(e) => {
             e.preventDefault();
-            if (numAdults + numChildren < maxGuests) changeGuests('numChildren', numChildren + 1);
+            const newChildren = numChildren + 1;
+            const overThreshold = (numAdults + newChildren + numInfants) > guestThreshold;
+            if (numAdults + numChildren < maxGuests) changeGuests('numChildren', newChildren, overThreshold);
           }}
         >
           <GuestCountSVG viewBox="0 0 24 24">

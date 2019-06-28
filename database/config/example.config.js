@@ -1,4 +1,4 @@
-const rootPW = 'YOUR ROOT PASSWORD HERE!';
+const rootPW = 'YOUR_ROOT_PASSWORD_HERE!';
 
 
-module.exports.rootPW = rootPW;
+module.exports = rootPW;

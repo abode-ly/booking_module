@@ -1,15 +1,23 @@
+require('dotenv').config();
 const Sequelize = require('sequelize');
-const pw = process.env.MYSQL_ROOT_PW || require('./config/sequelize.config').rootPW;
+const localPassword = require('./config/example.config');
 
-const databaseName = process.env.MYSQL_DATABASE || 'bookings';
+const {
+  MYSQL_HOST,
+  MYSQL_USER,
+  MYSQL_DATABASE,
+  MYSQL_ROOT_PASSWORD,
+} = process.env;
 
+const host = MYSQL_HOST || '172.17.0.2';
+const user = MYSQL_USER || 'root';
+const databaseName = MYSQL_DATABASE || 'bookings';
 
-const db = new Sequelize(databaseName, 'root', pw, {
-  host: process.env.MYSQL_URL || 'localhost',
+const db = new Sequelize(databaseName, user, MYSQL_ROOT_PASSWORD || localPassword, {
+  host,
   dialect: 'mysql',
   logging: false,
 });
 
-db.query('CREATE DATABASE IF NOT EXISTS bookings').then(() => console.log('Database created'));
 
 module.exports = db;
