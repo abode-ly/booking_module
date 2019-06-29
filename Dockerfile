@@ -1,4 +1,4 @@
-FROM node/8.16-alpine
+FROM mhart/alpine-node:8.15.1
 
 WORKDIR /client/src
 

@@ -1,6 +1,6 @@
 # Booking Module
 
-Abode.ly's Booking Microservice is the frontend component that allows users to browse the availability of and book an accommodation. [Click here to interact with a deployed version of this component](awsLink).
+Abode.ly's Booking Microservice is the frontend component that allows users to browse the availability of and book an accommodation. [Click here to interact with a deployed version of this component](http://13.57.229.84:3003/bookings/1).
 
 The component was built using React.js, Redux, Styled Components, Express/Node, and MySQL (using mock data for demo purposes). The microservice makes calls to the `/bookings/:bookingid/reserve` API on initial render and as the user browses the calendar.
 
